@@ -18,6 +18,7 @@ package org.apache.camel.quarkus.component.xml.it;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
+import java.nio.file.Files;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.support.builder.Namespaces;
@@ -30,7 +31,12 @@ public class XmlRouteBuilder extends RouteBuilder {
     public static final String DIRECT_XTOKENIZE = "direct:xtokenize";
 
     @Override
-    public void configure() {
+    public void configure() throws Exception {
+	System.out.println(Files.createTempDirectory("camel-xslt"));
+        String property = "java.io.tmpdir";
+        String tempDir = System.getProperty(property);
+        System.out.println("OS current temporary directory is " + tempDir);
+
         from(DIRECT_HTML_TO_DOM)
                 .unmarshal().tidyMarkup()
                 .process(exchange -> {
