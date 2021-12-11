@@ -21,7 +21,8 @@ jobs:
       with:
         java-version: '11'
     - name: Build with Maven
+      env:
+        TEMP: 'C:\temp'
       run: |
-        set TEMP=C:\temp
+        echo %TEMP%
         .\mvnw -B clean test --file pom.xml
-        dir %TEMP%
