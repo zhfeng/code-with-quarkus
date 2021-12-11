@@ -24,5 +24,5 @@ jobs:
       env:
         TEMP: 'C:\temp'
       run: |
-        echo %TEMP%
         .\mvnw -B clean test --file pom.xml
+        dir C:\Users\RUNNER~1\AppData\Local\Temp\

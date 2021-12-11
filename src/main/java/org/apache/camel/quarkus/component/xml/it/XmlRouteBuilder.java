@@ -32,7 +32,6 @@ public class XmlRouteBuilder extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
-	System.out.println(Files.createTempDirectory("camel-xslt"));
         String property = "java.io.tmpdir";
         String tempDir = System.getProperty(property);
         System.out.println("OS current temporary directory is " + tempDir);
